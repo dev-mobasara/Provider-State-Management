@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:provider_eligibility/controllers/home_page_controler.dart';
 
-import '../controllers/home_page_controler.dart';
-
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,9 +40,11 @@ class _HomePageState extends State<HomePage> {
                       height: 20.0,
                     ),
                     Text(
-                      provider.eligibilityMessage.toString(),
+                      provider.eligibleAge
+                          ? "You're Eligible"
+                          : "You're not Eligible",
                       style: TextStyle(
-                        color: (provider.eligibility == true)
+                        color: (provider.eligibleAge == true)
                             ? Colors.green
                             : Colors.red,
                         fontSize: 20.0,
